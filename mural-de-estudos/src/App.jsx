@@ -12,7 +12,7 @@ const array = [
 ];
 
 
-cosm
+
 
 export default function App() {
   return (
