@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getPosts } from '../api/client'
 import { Card, Container } from 'react-bootstrap'
-
+import  {PostsTotal } from './PostsTotal.jsx'
 export function PostList() {
   const [posts, setPosts] = useState([])
 
@@ -10,6 +10,7 @@ export function PostList() {
   }, [])
 
   return (
+  <>
     <Container className="my-4">
       <h2>Posts</h2>
       {posts.slice(0, 10).map(post => ( // Pega os 10 primeiros
@@ -21,5 +22,7 @@ export function PostList() {
         </Card>
       ))}
     </Container>
+    <PostsTotal />
+  </>
   )
 }

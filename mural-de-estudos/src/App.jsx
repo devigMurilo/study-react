@@ -1,39 +1,33 @@
 import Cabecalho from './components/Cabecalho';
-import { PostList } from './components/PostList'
-import Botao from './components/Button'
+import { PostList} from './components/PostList'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useTema, TemaProvider} from './components/Tema'
-import { Button } from 'react-bootstrap'
+import {TemaProvider} from './components/Tema'
+import {Home} from './components/Home.jsx'
+// rotas. react-router-dom
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+import NotFound from './components/NotFound';
+
 
 function App() {
   return (
     <div className="App">
       <TemaProvider>
-        <Cabecalho />
-        <Filho />
-        <h1>Dados da API</h1>
-        <PostList />
-        <Botao/>
-        
+        <BrowserRouter>
+          <Cabecalho title="Mural de Estudos" subtitle="Praticando React" />
+        <nav className="navbar navbar-expand-lg bg-body-tertiary nav-link active d-flex justify-content-center gap-3 my-4">
+          <Link to="/">Início</Link> | <Link to="/posts">Posts</Link>
+        </nav>
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/posts" element={<PostList />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
       </TemaProvider>
     </div>
   );
-}
-
-function Pai() {
-  return <Filho />
-}
- // nao sabia que dava pra fazer isso com classname
-function Filho() {
-  const { tema, setTema } = useTema()
-  return (
-    <div className={tema === 'claro' ? 'bg-light text-dark' : 'bg-dark text-light'}> 
-      <p>Tema atual: {tema}</p>
-      <Button type="button" className="btn-primary" onClick={() => setTema(tema === 'claro' ? 'escuro' : 'claro')}>
-        Alternar Tema
-      </Button>
-    </div>
-  )
 }
 
 export default App;
