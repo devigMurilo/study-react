@@ -4,23 +4,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {TemaProvider} from './components/Tema'
 import {Home} from './components/Home.jsx'
 // rotas. react-router-dom
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'; // link não vai precisar mais ser importado, pois a navbar ja importa ele
+import { Sobre } from './components/Sobre.jsx';
 import NotFound from './components/NotFound';
-
+import { NavBar } from './components/NavBar.jsx';
 
 function App() {
   return (
     <div className="App">
       <TemaProvider>
         <BrowserRouter>
-          <Cabecalho title="Mural de Estudos" subtitle="Praticando React" />
-        <nav className="navbar navbar-expand-lg bg-body-tertiary nav-link active d-flex justify-content-center gap-3 my-4">
-          <Link to="/">Início</Link> | <Link to="/posts">Posts</Link>
-        </nav>
-
+          <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sobre" element={<Sobre />} />
             <Route path="/posts" element={<PostList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
