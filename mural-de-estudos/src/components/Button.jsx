@@ -15,3 +15,4 @@ export default function Botao() {
     </div>
   );
 }
+// duvida, posso pegar esse botao que ja existe, importar e criar um novo estado para ele, ou seja, posso ter dois estados diferentes para o mesmo botao? 

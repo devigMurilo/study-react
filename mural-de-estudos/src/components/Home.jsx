@@ -9,7 +9,7 @@ export function Home() {
     <>
       <Card className="text-center my-4">
         <h1>Bem-vindo ao Mural de Estudos</h1>
-        <p>Este é o início do seu jornada de aprendizado em React.</p>
+        <p>Este é o início da jornada de aprendizado em React.</p>
       </Card>
       <Botao />
       <PostsTotal />
